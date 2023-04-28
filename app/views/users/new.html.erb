@@ -1,24 +1,9 @@
 <% provide(:title, 'Sign up') %>
+<% provide(:button_text, "Log in") %>
 <h1>Sign up</h1>
-
-<%= render 'shared/error_messages' %>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user, local: true) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Create account", class: "btn bnt-primary" %>
-    <% end %>
+    <%= render 'users/create_edit_form' %>
   </div>
 </div>

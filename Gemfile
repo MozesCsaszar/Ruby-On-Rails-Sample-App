@@ -6,6 +6,9 @@ ruby '2.7.5'
 gem 'net-http'
 gem 'rails',      '6.1.4.6'
 gem 'bcrypt', '3.1.13'
+gem 'faker', '2.1.2'
+gem 'will_paginate', '3.1.8'
+gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.4.1'
 gem 'puma',       '5.3.1'
 gem 'sass-rails', '6.0.0'
@@ -15,7 +18,6 @@ gem 'jbuilder',   '2.10.0'
 gem 'bootsnap',   '1.7.2', require: false
 
 group :development, :test do
-  gem 'rubocop', require: false
   gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
 end

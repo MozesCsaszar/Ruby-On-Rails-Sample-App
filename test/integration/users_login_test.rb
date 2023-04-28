@@ -31,8 +31,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
-
-
   test "login with valid email/invalid password" do
     get login_path
     assert_template 'sessions/new'
