@@ -100,4 +100,36 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "should follow and unfollow" do
+    michael = users(:michael)
+    archer = users(:archer)
+    assert_not michael.following?(archer)
+    michael.follow(archer)
+    assert michael.following?(archer)
+    assert archer.followers.include?(michael)
+    michael.unfollow(archer)
+    assert_not michael.following?(archer)
+  end
+
+  test "should see other followed users microposts" do
+    michael = users(:michael)
+    lana = users(:lana)
+    archer = users(:archer)
+    assert michael.following?(lana)
+    assert_not michael.following?(archer)
+    michael.microposts.each do |mp|
+      assert michael.feed.include?(mp)
+    end
+    lana.microposts.each do |mp|
+      assert michael.feed.include?(mp)
+    end
+    archer.microposts.each do |mp|
+      assert_not michael.feed.include?(mp)
+    end
+    michael.unfollow(lana)
+    lana.microposts.each do |mp|
+      assert_not michael.feed.include?(mp)
+    end
+  end
 end
